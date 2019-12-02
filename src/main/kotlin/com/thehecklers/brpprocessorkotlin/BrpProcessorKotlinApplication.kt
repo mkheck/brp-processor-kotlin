@@ -23,39 +23,43 @@ fun main(args: Array<String>) {
 class GateAgent {
     val rnd = Random
 
-//    @Bean
-//    fun greetPassenger(): (Passenger) -> FlyingPassenger =
-//        {
-//            val flyingPassenger = FlyingPassenger(
-//                it.id,
-//                it.name,
-//                if (rnd.nextInt(2) == 0)
-//                    FlyingPassenger.State.VALUED_PASSENGER
-//                else
-//                    FlyingPassenger.State.PREMIUM_PASSENGER
-//            )
-//
-//            println(flyingPassenger)
-//
-//            flyingPassenger
-//        }
+/*
+    @Bean
+    fun greetPassenger(): (Passenger) -> FlyingPassenger =
+        {
+            val flyingPassenger = FlyingPassenger(
+                it.id,
+                it.name,
+                if (rnd.nextInt(2) == 0)
+                    FlyingPassenger.State.VALUED_PASSENGER
+                else
+                    FlyingPassenger.State.PREMIUM_PASSENGER
+            )
 
-//    @Bean
-//    fun greetPassenger(): Function<Passenger, FlyingPassenger> =
-//        Function {
-//            val fPax = FlyingPassenger(
-//                it.id,
-//                it.name,
-//                if (rnd.nextInt(2) == 0)
-//                    FlyingPassenger.State.VALUED_PASSENGER
-//                else
-//                    FlyingPassenger.State.PREMIUM_PASSENGER
-//            )
-//
-//            println(fPax)
-//
-//            fPax
-//        }
+            println(flyingPassenger)
+
+            flyingPassenger
+        }
+*/
+
+/*
+    @Bean
+    fun greetPassenger(): Function<Passenger, FlyingPassenger> =
+        Function {
+            val fPax = FlyingPassenger(
+                it.id,
+                it.name,
+                if (rnd.nextInt(2) == 0)
+                    FlyingPassenger.State.VALUED_PASSENGER
+                else
+                    FlyingPassenger.State.PREMIUM_PASSENGER
+            )
+
+            println(fPax)
+
+            fPax
+        }
+*/
 
     @StreamListener(Processor.INPUT)
     @SendTo(Processor.OUTPUT)
