@@ -24,26 +24,10 @@ fun main(args: Array<String>) {
 class GateAgent {
     val rnd = Random
 
-/*
     @Bean
-    fun greetPassenger(): (Passenger) -> FlyingPassenger =
-        {
-            val flyingPassenger = FlyingPassenger(
-                it.id,
-                it.name,
-                if (rnd.nextInt(2) == 0)
-                    FlyingPassenger.State.VALUED_PASSENGER
-                else
-                    FlyingPassenger.State.PREMIUM_PASSENGER
-            )
-
-            println(flyingPassenger)
-
-            flyingPassenger
-        }
-*/
-
-    @Bean
+//    MH: This doesn't work...yet ;)
+//    fun greetPassenger(): (Flux<Passenger>) -> Flux<FlyingPassenger> =
+//        {
     fun greetPassenger(): Function<Flux<Passenger>, Flux<FlyingPassenger>> =
         Function {
             it.map {
