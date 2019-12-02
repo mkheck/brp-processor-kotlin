@@ -8,6 +8,7 @@ import org.springframework.cloud.stream.messaging.Processor
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.messaging.handler.annotation.SendTo
+import reactor.core.publisher.Flux
 import java.util.function.Function
 import kotlin.random.Random
 
@@ -18,8 +19,8 @@ fun main(args: Array<String>) {
     runApplication<BrpProcessorKotlinApplication>(*args)
 }
 
-//@Configuration
-@EnableBinding(Processor::class)
+@Configuration
+//@EnableBinding(Processor::class)
 class GateAgent {
     val rnd = Random
 
@@ -42,25 +43,26 @@ class GateAgent {
         }
 */
 
-/*
     @Bean
-    fun greetPassenger(): Function<Passenger, FlyingPassenger> =
+    fun greetPassenger(): Function<Flux<Passenger>, Flux<FlyingPassenger>> =
         Function {
-            val fPax = FlyingPassenger(
-                it.id,
-                it.name,
-                if (rnd.nextInt(2) == 0)
-                    FlyingPassenger.State.VALUED_PASSENGER
-                else
-                    FlyingPassenger.State.PREMIUM_PASSENGER
-            )
+            it.map {
+                val fPax = FlyingPassenger(
+                    it.id,
+                    it.name,
+                    if (rnd.nextInt(2) == 0)
+                        FlyingPassenger.State.VALUED_PASSENGER
+                    else
+                        FlyingPassenger.State.PREMIUM_PASSENGER
+                )
 
-            println(fPax)
+                println(fPax)
 
-            fPax
+                fPax
+            }
         }
-*/
 
+/*
     @StreamListener(Processor.INPUT)
     @SendTo(Processor.OUTPUT)
     fun greetPassenger(passenger: Passenger): FlyingPassenger {
@@ -77,7 +79,7 @@ class GateAgent {
 
         return flyingPassenger
     }
-
+*/
 }
 
 data class FlyingPassenger(val id: String, val name: String, val state: State) {
