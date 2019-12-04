@@ -25,7 +25,7 @@ class GateAgent {
     val rnd = Random
 
     @Bean
-//    MH: This doesn't work...yet ;)
+//    MH: Not yet available, but coming soon
 //    fun greetPassenger(): (Flux<Passenger>) -> Flux<FlyingPassenger> =
 //        {
     fun greetPassenger(): Function<Flux<Passenger>, Flux<FlyingPassenger>> =
@@ -46,7 +46,7 @@ class GateAgent {
             }
         }
 
-/*
+/*  // MH: Example without Publishers...
     @StreamListener(Processor.INPUT)
     @SendTo(Processor.OUTPUT)
     fun greetPassenger(passenger: Passenger): FlyingPassenger {

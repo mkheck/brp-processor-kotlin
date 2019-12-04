@@ -16,7 +16,7 @@ repositories {
 	maven { url = uri("https://repo.spring.io/milestone") }
 }
 
-extra["springCloudVersion"] = "Hoxton.RC2"
+extra["springCloudVersion"] = "Hoxton.RELEASE"
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-amqp")
